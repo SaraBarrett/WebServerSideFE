@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -17,9 +18,7 @@ Route::get('/home', function(){
 
 
 //rotas de users
-Route::get('/users', function(){
-    return view('users.all_users');
-})->name('users.all');
+Route::get('/users',[UserController::class, 'returnAllUsersView'])->name('users.all');
 
 Route::get('/add-users', function(){
     return view('users.add_user');
