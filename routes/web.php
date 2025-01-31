@@ -15,9 +15,15 @@ Route::get('/home', function(){
     return view('view_home');
 })->name('home');
 
+
+//rotas de users
 Route::get('/users', function(){
     return view('users.all_users');
 })->name('users.all');
+
+Route::get('/add-users', function(){
+    return view('users.add_user');
+})->name('users.add');
 
 
 Route::get('/hello/{name}', function($name){

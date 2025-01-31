@@ -1,25 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.fe_layout')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-@php
-    $myVar = 'hello world';
-@endphp
-
-<body>
+@section('content')
     <h1>Olá estou em casa</h1>
-    <h6>cucu {{ $myVar }}</h6>
+    <img class="my-image" src="{{ asset('images/what-is-software-CA-Capterra-Header.png') }}" alt="">
+
 
     <ul>
         <li><a href="{{ route('users.all') }}">Todos os Users</a></li>
-        <li> <a href="{{route('welcome')}}">Welcome Page</a> </li>
-        <li><a href="{{route('hello')}}">Hello</a> </li>
+        <li> <a href="{{ route('welcome') }}">Welcome Page</a> </li>
+        <li><a href="{{ route('hello') }}">Hello</a> </li>
+        <li><a href="{{ route('users.add') }}">Adicionar Utilizador</a> </li>
     </ul>
-</body>
-
-</html>
+@endsection
