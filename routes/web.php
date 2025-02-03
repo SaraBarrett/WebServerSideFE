@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\TaskController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +29,8 @@ Route::get('/update-user-db', [UserController::class, 'updateUserIntoDB']);
 Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
 
 
-
+//rotas de tasks
+Route::get('/tasks',[TaskController::class, 'returnAllTasksView'])->name('tasks.all');
 
 Route::get('/hello/{name}', function($name){
     return '<h1>Olá '.$name.'</h1>';

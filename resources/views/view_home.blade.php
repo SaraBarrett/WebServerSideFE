@@ -9,9 +9,9 @@
     <h6>A lista de compras tem {{ $shoppingList[2] }}</h6>
 
     <ul>
-    @foreach ($shoppingList as $item)
-        <li>O item é: {{$item}}</li>
-    @endforeach
+        @foreach ($shoppingList as $item)
+            <li>O item é: {{ $item }}</li>
+        @endforeach
     </ul>
 
     <h6>O nome é {{ $contactInfo['name'] }} e o contacto é {{ $contactInfo['email'] }}</h6>
@@ -21,5 +21,6 @@
         <li> <a href="{{ route('welcome') }}">Welcome Page</a> </li>
         <li><a href="{{ route('hello') }}">Hello</a> </li>
         <li><a href="{{ route('users.add') }}">Adicionar Utilizador</a> </li>
+        <li><a href="{{ route('tasks.all') }}">Tarefas</a></li>
     </ul>
 @endsection
