@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Ramsey\Uuid\Guid\Guid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -13,6 +14,7 @@ class UserController extends Controller
         $allUsers = $this->getUsers();
         $usersFromDB = $this->getUsersFromDB();
 
+        $myTeamLeader = DB::table('users')->where('id',6)->first();
 
         return view('users.all_users', compact('myName','allUsers', 'usersFromDB'));
     }
@@ -54,7 +56,6 @@ class UserController extends Controller
         return response()->json('user apagado com sucesso');
     }
 
-
     private function getMyVar(){
         $myName = 'Sara';
 
@@ -73,8 +74,7 @@ class UserController extends Controller
 
     private function getUsersFromDB(){
         $usersFromDB =
-        DB::table('users')
-        ->get();
+       User::get();
 
         return $usersFromDB;
     }
