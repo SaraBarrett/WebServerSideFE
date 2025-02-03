@@ -17,6 +17,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->date('due_at')->nullable();
             $table->boolean('status')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
         });
     }

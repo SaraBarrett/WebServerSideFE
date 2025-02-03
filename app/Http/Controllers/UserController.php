@@ -2,23 +2,58 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Ramsey\Uuid\Guid\Guid;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function returnAllUsersView(){
         $myName = $this->getMyVar();
         $allUsers = $this->getUsers();
+        $usersFromDB = $this->getUsersFromDB();
 
 
-        return view('users.all_users', compact('myName','allUsers'));
+        return view('users.all_users', compact('myName','allUsers', 'usersFromDB'));
     }
 
     public function returnAddUserView(){
 
         return view('users.add_user');
     }
+
+    public function insertUserIntoDB(){
+        DB::table('users')
+        ->insert([
+            'name' => 'Raquel',
+            'email' => 'Raquel@gmail.com',
+            'password' => 'Raquel12345',
+        ]);
+
+        return response()->json('user inserido');
+
+    }
+
+    public function updateUserIntoDB(){
+        Db::table('users')
+        ->where('id', 4)
+        ->update([
+            'name' =>'Ruben',
+            'updated_at' => now()
+        ]);
+
+        return response()->json('user actualizado com sucesso');
+    }
+
+    public function deleteUserFromDB(){
+
+        DB::table('users')
+        ->where('email', 'Sara2@gmail.com')
+        ->delete();
+
+        return response()->json('user apagado com sucesso');
+    }
+
 
     private function getMyVar(){
         $myName = 'Sara';
@@ -34,6 +69,14 @@ class UserController extends Controller
         ];
 
         return $users;
+    }
+
+    private function getUsersFromDB(){
+        $usersFromDB =
+        DB::table('users')
+        ->get();
+
+        return $usersFromDB;
     }
 
 

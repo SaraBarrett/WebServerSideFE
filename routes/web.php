@@ -21,6 +21,14 @@ Route::get('/users',[UserController::class, 'returnAllUsersView'])->name('users.
 
 Route::get('/add-users', [UserController::class, 'returnAddUserView'])->name('users.add');
 
+Route::get('/insert-user-db', [UserController::class, 'insertUserIntoDB']);
+
+Route::get('/update-user-db', [UserController::class, 'updateUserIntoDB']);
+
+Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
+
+
+
 
 Route::get('/hello/{name}', function($name){
     return '<h1>Olá '.$name.'</h1>';
