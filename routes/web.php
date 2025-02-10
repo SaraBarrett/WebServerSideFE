@@ -30,6 +30,9 @@ Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.
 //rotas de tasks
 Route::get('/tasks',[TaskController::class, 'returnAllTasksView'])->name('tasks.all');
 
+Route::get('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
+Route::get('/view-task/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
+
 Route::get('/hello/{name}', function($name){
     return '<h1>Olá '.$name.'</h1>';
 });
