@@ -1,5 +1,12 @@
 @extends('layouts.fe_layout')
 @section('content')
+
+    @if(session('message'))
+    <div class="alert alert-success">
+            {{session('message')}}
+    </div>
+    @endif
+
     <h3>Olá aqui vais ter todos os users em dummy content sem ser da Base de Dados</h3>
     <h6>olá {{ $myName }}</h6>
     <ul>

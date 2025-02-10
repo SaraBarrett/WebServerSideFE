@@ -1,12 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use App\Models\User;
-use Ramsey\Uuid\Guid\Guid;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\User;
 class UserController extends Controller
 {
     public function returnAllUsersView(){
@@ -67,6 +65,23 @@ class UserController extends Controller
         ->delete();
 
         return back();
+    }
+
+    public function createUser(Request $request){
+        $request->validate([
+            'name'=> 'required|string|max:50',
+            'email'=> 'required|email|unique:users',
+            'password' =>'required|min:8'
+        ]);
+
+        User::insert([
+            'name' => $request->name,
+            'email' =>$request->email,
+            'password' =>Hash::make($request->password),
+        ]);
+
+        return redirect()->route('users.all')->with('message', 'Utilizador adicionado com sucesso!');
+
     }
 
     public function viewUser($id){
