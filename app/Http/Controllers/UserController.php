@@ -56,6 +56,28 @@ class UserController extends Controller
         return response()->json('user apagado com sucesso');
     }
 
+    public function deleteUser($id){
+        DB::table('tasks')
+        ->where('user_id', $id)
+        ->delete();
+
+
+        DB::table('users')
+        ->where('id', $id)
+        ->delete();
+
+        return back();
+    }
+
+    public function viewUser($id){
+        $ourUser = DB::table('users')
+        ->where('id', $id)
+        ->first();
+
+        return view('users.view_user', compact('ourUser'));
+
+    }
+
     private function getMyVar(){
         $myName = 'Sara';
 

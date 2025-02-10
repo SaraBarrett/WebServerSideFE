@@ -19,14 +19,12 @@ Route::get('/home', [HomeController::class, 'returnViewHome'])->name('home');
 
 //rotas de users
 Route::get('/users',[UserController::class, 'returnAllUsersView'])->name('users.all');
-
 Route::get('/add-users', [UserController::class, 'returnAddUserView'])->name('users.add');
-
 Route::get('/insert-user-db', [UserController::class, 'insertUserIntoDB']);
-
 Route::get('/update-user-db', [UserController::class, 'updateUserIntoDB']);
-
 Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
+Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
+Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 
 
 //rotas de tasks

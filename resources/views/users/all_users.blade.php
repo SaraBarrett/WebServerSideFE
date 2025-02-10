@@ -27,8 +27,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->address }}</td>
-                    <td><a href="" class="btn btn-info">Ver</a></td>
-                    <td><a href="" class="btn btn-danger">Apagar</a></td>
+                    <td><a href="{{route('users.view',$user->id)}}" class="btn btn-info">Ver</a></td>
+                    <td><a href="{{route('users.delete', $user->id )}}" class="btn btn-danger">Apagar</a></td>
                 </tr>
             @endforeach
 

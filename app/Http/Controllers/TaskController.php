@@ -10,7 +10,7 @@ class TaskController extends Controller
 {
     public function returnAllTasksView(){
         $tasksFromDB = $this->getAllTasks();
-        dd(User::USER_TEACHER);
+    
 
         return view('tasks.all_tasks', compact('tasksFromDB'));
     }
