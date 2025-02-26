@@ -26,6 +26,7 @@ Route::get('/delete-user-db', [UserController::class, 'deleteUserFromDB']);
 Route::get('/delete-user/{id}', [UserController::class, 'deleteUser'])->name('users.delete');
 Route::get('/view-user/{id}', [UserController::class, 'viewUser'])->name('users.view');
 Route::post('/create-users', [UserController::class, 'createUser'])->name('users.create');
+Route::post('/update-user', [UserController::class, 'updateUser'])->name('users.update');
 
 
 //rotas de tasks
@@ -33,6 +34,12 @@ Route::get('/tasks',[TaskController::class, 'returnAllTasksView'])->name('tasks.
 
 Route::get('/delete-task/{id}', [TaskController::class, 'deleteTask'])->name('tasks.delete');
 Route::get('/view-task/{id}', [TaskController::class, 'viewTask'])->name('tasks.view');
+
+Route::get('/add-task', [TaskController::class, 'addTask'])->name('tasks.add');
+Route::post('/create-task', [TaskController::class, 'createTask'])->name('tasks.create');
+Route::post('/update-task', [TaskController::class, 'updateTask'])->name('tasks.update');
+
+
 
 Route::get('/hello/{name}', function($name){
     return '<h1>Olá '.$name.'</h1>';

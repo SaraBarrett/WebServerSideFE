@@ -1,10 +1,9 @@
 @extends('layouts.fe_layout')
 @section('content')
-
-    @if(session('message'))
-    <div class="alert alert-success">
-            {{session('message')}}
-    </div>
+    @if (session('message'))
+        <div class="alert alert-success">
+            {{ session('message') }}
+        </div>
     @endif
 
     <h3>Olá aqui vais ter todos os users em dummy content sem ser da Base de Dados</h3>
@@ -34,8 +33,8 @@
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->address }}</td>
-                    <td><a href="{{route('users.view',$user->id)}}" class="btn btn-info">Ver</a></td>
-                    <td><a href="{{route('users.delete', $user->id )}}" class="btn btn-danger">Apagar</a></td>
+                    <td><a href="{{ route('users.view', $user->id) }}" class="btn btn-info">Ver / Editar</a></td>
+                    <td><a href="{{ route('users.delete', $user->id) }}" class="btn btn-danger">Apagar</a></td>
                 </tr>
             @endforeach
 
