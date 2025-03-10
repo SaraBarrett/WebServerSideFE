@@ -15,6 +15,11 @@
     </ul>
 
     <h3>Users vindos da BD</h3>
+
+    <form action="">
+        <input type="text" name="search" value="{{ request()->query('search') }}" id="">
+        <button type="submit" class="btn btn-secondary">Procurar</button>
+    </form>
     <table class="table">
         <thead>
             <tr>

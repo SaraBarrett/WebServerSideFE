@@ -10,7 +10,29 @@ class UserController extends Controller
     public function returnAllUsersView(){
         $myName = $this->getMyVar();
         $allUsers = $this->getUsers();
-        $usersFromDB = $this->getUsersFromDB();
+
+
+        // $search = null;
+
+        // if(request()->query('search')){
+        //     $search = request()->query('search');
+
+        // }else{
+        //     $search = null;
+        // }
+
+
+        $search = request()->query('search') ? request()->query('search'):null;
+
+
+        $usersFromDB = db::table('users');
+        if( $search){
+            $usersFromDB =  $usersFromDB->where('name', 'like', "%{$search}%")
+                            ->orWhere('email', 'like', "%{$search}%")
+                            ->orWhere('address', 'like', "%{$search}%");
+        }
+        $usersFromDB = $usersFromDB->get();
+
 
         $myTeamLeader = DB::table('users')->where('id',6)->first();
 
